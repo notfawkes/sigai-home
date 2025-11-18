@@ -3,7 +3,6 @@ import Aurora from './Aurora';
 import RubiksCube from './RubiksCube';
 import { StaircaseSection } from './StaircaseSection';
 import { Footer } from './Footer';
-import Navbar from './Navbar';
 
 export default function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -134,7 +133,6 @@ export default function App() {
 
   return (
     <div style={styles.container}>
-      <Navbar isMobile={isMobile} />
 
       {/* Aurora background */}
       <div style={styles.liquidEtherContainer}>
