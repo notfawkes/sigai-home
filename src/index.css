@@ -91,11 +91,11 @@ All colors MUST be HSL.
 @layer base {
   * {
     @apply border-border;
-    cursor: url('/cursor.cur'), auto;
+    cursor: url('/cursor.png'), auto;
   }
 
   a, button, [role="button"], input[type="button"], input[type="submit"], .cursor-pointer {
-    cursor: url('/cursor.cur'), pointer;
+    cursor: url('/cursor.png'), pointer;
   }
 
   body {
