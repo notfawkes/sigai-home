@@ -3,6 +3,8 @@ import Aurora from './Aurora';
 import RubiksCube from './RubiksCube';
 import { StaircaseSection } from './StaircaseSection';
 import { Footer } from './Footer';
+import Hover3DCard from './Hover3dCard';
+import Aboutus from './Aboutus';
 
 export default function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -30,14 +32,45 @@ export default function App() {
   }, []);
 
   const styles = useMemo(() => {
-    // Calculate scroll progress (0 to 1) for hero section fade
     const heroFadeStart = 0;
-    const heroFadeEnd = 600;
+    const heroFadeEnd = 3000;
     const scrollProgress = Math.min(Math.max((scrollY - heroFadeStart) / (heroFadeEnd - heroFadeStart), 0), 1);
     const heroOpacity = 1 - scrollProgress;
     const heroTransform = scrollProgress * 50;
 
     return {
+        hoverCardSection: {
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: isMobile ? '3rem 1.25rem' : '6rem 2rem',
+          boxSizing: 'border-box',
+          position: 'relative',
+          zIndex: 2,
+        },
+
+        hoverCardContainer: {
+          width: '100%',
+          maxWidth: '1100px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        },
+        aboutSection: {
+          width: '100%',
+          position: 'relative',
+          zIndex: 2,
+          padding: isMobile ? '4rem 1.25rem' : '6rem 4rem',
+          boxSizing: 'border-box',
+          display: 'flex',
+          justifyContent: 'center',
+        },
+        aboutContainer: {
+          width: '100%',
+          maxWidth: '1100px',
+        },
+  
       container: {
         position: 'relative',
         width: '100vw',
@@ -94,6 +127,8 @@ export default function App() {
       flexShrink: 0,
       order: isMobile ? -1 : 1,
     },
+
+
     textContainer: {
       flex: 1,
       marginTop: isMobile ? '2rem' : 0,
@@ -135,21 +170,20 @@ export default function App() {
     <div style={styles.container}>
 
       {/* Aurora background */}
-      <div style={styles.liquidEtherContainer}>
+      {/* <div style={styles.liquidEtherContainer}>
         <Aurora
           colorStops={["#1a1a3e", "#2d2d5f", "#1a4d6f"]}
           blend={0.6}
           amplitude={1.2}
           speed={0.4}
         />
-      </div>
+      </div> */}
 
       {/* Gradient background */}
       <div style={styles.gradientBackground} />
 
       {/* Main content */}
       <div style={styles.contentWrapper}>
-        {/* Rubik's Cube */}
         <div style={styles.canvasContainer}>
           <RubiksCube />
         </div>
@@ -162,6 +196,58 @@ export default function App() {
           <p style={styles.subHeading}>
             Student's Chapter
           </p>
+        </div>
+      </div>
+
+      <div style={styles.contentWrapper}>
+        <div style={styles.canvasContainer}>
+          <RubiksCube />
+        </div>
+
+        {/* Text content */}
+<div style={styles.textContainer}>
+  {/* Added light cyan color to match the image heading */}
+  <h1 style={{ ...styles.mainHeading, color: '#AEEFFF' }}>
+    ABOUT US
+  </h1>
+
+  <p style={styles.subHeading}>
+    TCET ACM SIGAI is a professional body that was established in January 2023. It aims to bring together and inculcate research ideologies in people from all over India with a passion in the field of Artificial Intelligence and Machine Learning by means of conducting seminars, debates, Kaggle competitions, etc.
+  </p>
+
+  <br />
+
+<p style={styles.subHeading}>
+  {/* Added 2 spaces after 50+ */}
+  <span style={{ color: '#3B82F6', fontWeight: 'bold' }}>50+</span>&nbsp;&nbsp;&nbsp;&nbsp;Number of events<br />
+  
+  {/* Added 1 space after 100+ */}
+  <span style={{ color: '#3B82F6', fontWeight: 'bold' }}>100+</span>&nbsp;&nbsp;Members<br />
+  
+  {/* Added 2 spaces after 30% */}
+  <span style={{ color: '#3B82F6', fontWeight: 'bold' }}>30%</span>&nbsp;&nbsp;&nbsp;Growth per year<br />
+</p>
+</div>
+      </div>
+{/* 
+      <div style={styles.aboutSection}>
+        <div style={styles.aboutContainer}>
+          <Aboutus />
+        </div>
+      </div> */}
+
+      <div style={styles.hoverCardSection}>
+        <div style={styles.hoverCardContainer}>
+          <Hover3DCard
+            title="Lorem ipsum"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            mainImage="https://images.unsplash.com/photo-1518770660439-4636190af475"
+            extraImages={[
+              "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+              "https://images.unsplash.com/photo-1526378722484-bd91ca387e72",
+              "https://images.unsplash.com/photo-1555066931-4365d14bab8c",
+            ]}
+          />
         </div>
       </div>
 

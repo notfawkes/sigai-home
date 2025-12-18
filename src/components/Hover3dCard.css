@@ -1,0 +1,106 @@
+/* ===== Container layout ===== */
+.h3d-container {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+/* ===== Text section ===== */
+.h3d-text {
+  flex: 1;
+}
+
+.h3d-text h1 {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.h3d-text p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* ===== Image stack wrapper ===== */
+.h3d-image-wrapper {
+  position: relative;
+  width: 300px;
+  height: 420px;
+  perspective: 1400px;
+}
+
+/* ===== Shared card styles ===== */
+.h3d-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 260px;
+  height: 380px;
+  border-radius: 20px;
+  object-fit: cover;
+
+  transform-style: preserve-3d;
+  transform-origin: center;
+
+  transition:
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease;
+
+  /* Default transform (variables injected per card) */
+  transform:
+    translate(-50%, -50%)
+    translateY(var(--y))
+    translateZ(var(--z));
+}
+
+/* ===== Layer configuration ===== */
+/* Top card */
+.h3d-image.main {
+  --y: 0px;
+  --z: 120px;
+  z-index: 4;
+}
+
+/* Card 2 */
+.h3d-image.img1 {
+  --y: 80px;   /* ~30% visible */
+  --z: 80px;
+  z-index: 3;
+  opacity: 0;
+}
+
+/* Card 3 */
+.h3d-image.img2 {
+  --y: 160px;   /* ~60% visible */
+  --z: 40px;
+  z-index: 2;
+  opacity: 0;
+}
+
+/* Card 4 */
+.h3d-image.img3 {
+  --y: 240px;   /* almost full card revealed */
+  --z: 0px;
+  z-index: 1;
+  opacity: 0;
+}
+
+
+/* ===== Hover interaction ===== */
+.h3d-image-wrapper:hover .h3d-image {
+  transform:
+    translate(-50%, -50%)
+    translateY(var(--y))
+    translateZ(var(--z))
+    rotate3d(-1, -1, -1, 60deg);
+}
+
+.h3d-image-wrapper:hover .h3d-image:not(.main) {
+  opacity: 1;
+}
+
+/* ===== Optional polish ===== */
+.h3d-image {
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.35);
+}
