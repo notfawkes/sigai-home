@@ -46,17 +46,19 @@
 }
 
 .carousel-title {
-  font-family: 'Abril Fatface', serif; 
-  font-weight: 400; 
-  font-size: 50px; 
-  letter-spacing: 0.08em; 
+  font-family: 'Abril Fatface', serif;
+  font-weight: 400;
+  font-size: clamp(1.75rem, 4.5vw, 3.5rem);
+  letter-spacing: 0.04em;
   color: rgba(200, 200, 200, 1);
+  margin: 0;
+  line-height: 1.05;
 }
 
 .carousel-subtitle {
-  color: #9ca3af; 
-  font-size: 1.25rem; 
-  margin-top: 1rem;
+  color: #9ca3af;
+  font-size: clamp(0.95rem, 2.2vw, 1.25rem);
+  margin-top: 0.75rem;
 }
 
 .carousel-wrapper {
@@ -73,16 +75,20 @@
   box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.5);
 }
 
+/* CSS variables drive the animation distance and timing. */
 .carousel-track {
   display: flex;
   height: 100%;
-  animation: scroll 45s linear infinite;
+  --slides: 4; /* fallback; overridden inline from React */
+  --slide-width: 475px;
+  --duration: 45s;
+  animation: scroll var(--duration) linear infinite;
   will-change: transform;
 }
 
 .carousel-slide {
   flex-shrink: 0;
-  width: 475px;
+  width: var(--slide-width);
   padding: 0;
   height: 100%;
 }
@@ -100,21 +106,16 @@
 
 @keyframes scroll {
   from { transform: translateX(0); }
-  to { transform: translateX(calc(-475px * 8)); }
+  /* move by the width of the original set (not the duplicated track) */
+  to { transform: translateX(calc(var(--slide-width) * var(--slides) * -1)); }
 }
 
 @media (max-width: 768px) {
   .carousel-wrapper { width: 100%; height: 375px; }
-  .carousel-slide { width: 350px; }
-  @keyframes scroll {
-    to { transform: translateX(calc(-350px * 8)); }
-  }
+  .carousel-track { --slide-width: 350px; --duration: 36s; }
 }
 
 @media (max-width: 480px) {
   .carousel-wrapper { width: 100%; height: 275px; }
-  .carousel-slide { width: 275px; }
-  @keyframes scroll {
-    to { transform: translateX(calc(-275px * 8)); }
-  }
+  .carousel-track { --slide-width: 275px; --duration: 28s; }
 }

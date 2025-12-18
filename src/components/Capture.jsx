@@ -21,10 +21,10 @@ export default function Capture() {
         <p className="carousel-subtitle">A glimpse into our moments and creations</p>
       </div>
 
-      <div className="carousel-wrapper">
-        <div className="carousel-track">
+      <div className="carousel-wrapper" role="region" aria-label="Image carousel">
+        <div className="carousel-track" style={{ ['--slides']: images.length }}>
           {[...images, ...images].map((src, index) => (
-            <div key={index} className="carousel-slide">
+            <div key={index} className="carousel-slide" aria-hidden={index >= images.length ? 'true' : 'false'}>
               <img src={src} alt={`Slide ${index % images.length + 1}`} className="slide-image" />
             </div>
           ))}
