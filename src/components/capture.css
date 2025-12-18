@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
+.carousel-container {
+  min-height: 100vh;
+  background-color: #000F1F;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.ellipse {
+  position: absolute; 
+  border-radius: 50%; 
+  pointer-events: none; 
+  z-index: 3;
+}
+
+.ellipse-top-white {
+  width: 1818px; 
+  height: 104px; 
+  top: 273px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  border: 2px solid #FFFFFF; 
+  border-top: none;
+}
+
+.ellipse-bottom-white {
+  width: 1818px; 
+  height: 104px; 
+  bottom: 20px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  border: 2px solid #FFFFFF; 
+  border-bottom: none;
+}
+
+.carousel-header {
+  text-align: center; 
+  margin-bottom: 120px; 
+  z-index: 10; 
+  position: relative;
+}
+
+.carousel-title {
+  font-family: 'Abril Fatface', serif; 
+  font-weight: 400; 
+  font-size: 50px; 
+  letter-spacing: 0.08em; 
+  color: rgba(200, 200, 200, 1);
+}
+
+.carousel-subtitle {
+  color: #9ca3af; 
+  font-size: 1.25rem; 
+  margin-top: 1rem;
+}
+
+.carousel-wrapper {
+  width: 1818px;
+  height: 500px;
+  position: relative;
+  z-index: 5;
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1818 104" preserveAspectRatio="none"><path d="M0,0 C454,22 1364,22 1818,0 L1818,104 C1400,82 454,82 0,104 Z" fill="white"/></svg>');
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1818 104" preserveAspectRatio="none"><path d="M0,0 C454,22 1364,22 1818,0 L1818,104 C1400,82 454,82 0,104 Z" fill="white"/></svg>');
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-track {
+  display: flex;
+  height: 100%;
+  animation: scroll 45s linear infinite;
+  will-change: transform;
+}
+
+.carousel-slide {
+  flex-shrink: 0;
+  width: 475px;
+  padding: 0;
+  height: 100%;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.carousel-wrapper:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-475px * 8)); }
+}
+
+@media (max-width: 768px) {
+  .carousel-wrapper { width: 100%; height: 375px; }
+  .carousel-slide { width: 350px; }
+  @keyframes scroll {
+    to { transform: translateX(calc(-350px * 8)); }
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-wrapper { width: 100%; height: 275px; }
+  .carousel-slide { width: 275px; }
+  @keyframes scroll {
+    to { transform: translateX(calc(-275px * 8)); }
+  }
+}

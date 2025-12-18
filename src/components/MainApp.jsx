@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import Aurora from './Aurora';
 import RubiksCube from './RubiksCube';
 import { StaircaseSection } from './StaircaseSection';
 import { Footer } from './Footer';
 import Hover3DCard from './Hover3dCard';
-import Aboutus from './Aboutus';
+import Capture from './Capture';
 
 export default function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -254,6 +253,11 @@ export default function App() {
       <div style={styles.stepContainer}>
         <StaircaseSection />
       </div>
+
+      <div style={styles.stepContainer}>
+        <Capture />
+      </div>
+
       <div style={styles.footerContainer}>
         <Footer />
       </div>
