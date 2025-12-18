@@ -1,4 +1,4 @@
-import "./Hover3DCard.css";
+import "./Hover3dCard.css";
 
 export default function Hover3DCard({
   title = "3D Hover Effect",
