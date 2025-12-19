@@ -4,6 +4,8 @@ import { StaircaseSection } from './StaircaseSection';
 import { Footer } from './Footer';
 import Hover3DCard from './Hover3dCard';
 import Capture from './Capture';
+import PublicationsRibbon from './PublicationsRibbon';
+import tejas1 from '../assets/tejas-main.png'
 
 export default function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -15,20 +17,20 @@ export default function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setScrollY(window.scrollY);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  // useEffect(() => {
+  //   let ticking = false;
+  //   const handleScroll = () => {
+  //     if (!ticking) {
+  //       window.requestAnimationFrame(() => {
+  //         setScrollY(window.scrollY);
+  //         ticking = false;
+  //       });
+  //       ticking = true;
+  //     }
+  //   };
+  //   window.addEventListener('scroll', handleScroll, { passive: true });
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, []);
 
   const styles = useMemo(() => {
     const heroFadeStart = 0;
@@ -51,7 +53,7 @@ export default function App() {
 
         hoverCardContainer: {
           width: '100%',
-          maxWidth: '1100px',
+          maxWidth: '600px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -123,7 +125,7 @@ export default function App() {
         justifyContent: 'space-between',
         padding: isMobile ? '6rem 1.5rem 2rem' : '8rem 4rem 4rem',
         boxSizing: 'border-box',
-        opacity: heroOpacity,
+        // opacity: heroOpacity,
         transform: `translateY(-${heroTransform}px)`,
         transition: 'opacity 0.1s ease-out, transform 0.1s ease-out',
       },
@@ -152,6 +154,32 @@ export default function App() {
       letterSpacing: 2,
       lineHeight: 1.1,
       fontFamily: "'Abril Fatface', serif",
+      isolation: 'isolate',
+    },
+    mainHeading2: {
+      fontSize: 'clamp(2rem, 8vw, 8rem)',
+      fontWeight: 300,
+      margin: 30,
+      letterSpacing: 2,
+      lineHeight: 0.9,
+      fontFamily: "'Abril Fatface', sans-serif",
+      color: '#00E0FF'
+    },
+    mainHeading3: {
+      fontSize: 'clamp(1.1rem, 3vw, 3rem)',
+      fontWeight: 300,
+      margin: 30,
+      letterSpacing: 2,
+      lineHeight: 0.9,
+      fontFamily: "'Abril Fatface', sans-serif",
+    },
+    mainHeading4: {
+      fontSize: 'clamp(0.9rem, 1vw, 1rem)',
+      fontWeight: 300,
+      margin: 30,
+      letterSpacing: 2,
+      lineHeight: 1.8,
+      fontFamily: "'Poppins', sans-serif",
     },
     subHeading: {
       fontSize: 'clamp(0.9rem, 2vw, 2rem)',
@@ -242,7 +270,7 @@ export default function App() {
         </div>
       </div> */}
 
-      <div style={styles.hoverCardSection}>
+      {/* <div style={styles.hoverCardSection}>
         <div style={styles.hoverCardContainer}>
           <Hover3DCard
             title="Lorem ipsum"
@@ -255,7 +283,92 @@ export default function App() {
             ]}
           />
         </div>
-      </div>
+      </div> */}
+
+<div style={{ 
+  ...styles.contentWrapper, 
+  display: 'flex', 
+  justifyContent: 'flex-start',        // Hardcoded "nudge" to the left
+  marginRight: typeof window !== 'undefined' && window.innerWidth > 1024 ? '-100px' : '0'
+}}>
+<div style={{ ...styles.textContainer }}>
+  <PublicationsRibbon position="top" />
+  <PublicationsRibbon position="bottom" />
+  
+  <h1 style={{ 
+    color: '#00E5FF', // The vibrant cyan you requested
+    fontSize: 'clamp(3rem, 10vw, 6rem)', 
+    fontWeight: '300', 
+    margin: '0',
+    letterSpacing: '2px',
+    fontFamily: "'Abril Fatface', serif"
+  }}>
+    EXPLORE
+  </h1>
+
+  <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginTop: '-10px' }}>
+    <p style={{ 
+      color: '#00E5FF', 
+      fontSize: '2rem', 
+      fontWeight: '700', 
+      margin: '0',
+      fontFamily: "'Abril Fatface', serif" 
+    }}>
+      our newest
+    </p>
+
+    {/* Button with Link */}
+    <a href="https://acm-sigai.vercel.app/publications" target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
+      <button
+        className="
+          rounded-full
+          px-8 py-2
+          text-md
+          font-black
+          text-[#07165F]
+          transition-transform duration-300 ease-in-out
+          hover:scale-105
+          active:scale-95
+          border-none
+          focus:outline-none
+          cursor-pointer
+        "
+        style={{ 
+          backgroundColor: '#C2F3FF', // Specific light cyan background
+          fontFamily: "'Abril Fatface', serif",
+          color: 'black'
+        }}
+      >
+        publications
+      </button>
+    </a>
+  </div>
+
+  <p style={{ 
+    color: '#FFFFFF', 
+    opacity: '0.8', 
+    fontSize: '1.1rem', 
+    maxWidth: '450px', 
+    marginTop: '25px',
+    lineHeight: '1.5',
+    fontFamily: "'Poppins', sans-serif"
+  }}>
+    Explore our latest collection of publications that showcase our research, insights, and contributions across various topics and fields.
+  </p>
+</div>
+
+  <div style={styles.hoverCardContainer}>
+    <Hover3DCard
+      mainImage={tejas1}
+      extraImages={[
+        "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+        "https://images.unsplash.com/photo-1526378722484-bd91ca387e72",
+        "https://images.unsplash.com/photo-1555066931-4365d14bab8c",
+      ]}
+    />
+  </div>
+</div>
+
 
       <div style={styles.stepContainer}>
         <StaircaseSection />

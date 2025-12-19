@@ -1,0 +1,65 @@
+/* PublicationsRibbon.css */
+
+.pub-ribbon {
+  position: fixed;              /* ignores parent layout */
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 150vw;
+  background: #00e0ff;
+  padding: 12px 0;
+  overflow: hidden;
+  z-index: 9999;
+  pointer-events: none;
+  font-family: "Poppins", sans-serif;
+}
+
+.pub-ribbon--top {
+  top: 70px;
+}
+
+.pub-ribbon--bottom {
+  bottom: -30px;
+  transform: translateX(-50%) rotate(-1deg);
+}
+
+.pub-ribbon__track {
+  display: inline-flex;
+  align-items: center;
+  gap: 40px;
+  white-space: nowrap;
+  animation: ribbon-scroll 25s linear infinite;
+}
+
+.pub-ribbon__item {
+  font-size: 2rem;
+  font-weight: 400;
+  color: #000;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pub-ribbon__star {
+  color: #07165f;
+}
+
+@keyframes ribbon-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .pub-ribbon {
+    width: 180vw;
+    padding: 8px 0;
+  }
+
+  .pub-ribbon__item {
+    font-size: 1.4rem;
+  }
+}

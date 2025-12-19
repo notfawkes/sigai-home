@@ -1,0 +1,116 @@
+/* ===== Container layout ===== */
+.h3d-container {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 6vw, 80px);
+  padding: clamp(16px, 4vw, 40px);
+}
+
+@media (max-width: 768px) {
+  .h3d-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ===== Text section ===== */
+.h3d-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.h3d-text h1 {
+  font-size: clamp(24px, 5vw, 40px);
+  margin-bottom: clamp(8px, 2vw, 16px);
+}
+
+.h3d-text p {
+  font-size: clamp(14px, 3.5vw, 18px);
+  line-height: 1.6;
+}
+
+/* ===== Image stack wrapper ===== */
+.h3d-image-wrapper {
+  position: relative;
+  width: min(80vw, 300px);
+  aspect-ratio: 300 / 420;
+  perspective: clamp(800px, 120vw, 1400px);
+}
+
+/* ===== Shared card styles ===== */
+.h3d-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 86%;
+  aspect-ratio: 260 / 380;
+  height: auto;
+
+  border-radius: clamp(12px, 4vw, 20px);
+  object-fit: cover;
+
+  border: 3px solid #ffffff;
+  box-sizing: border-box;
+  background-color: #000;
+
+  transform-style: preserve-3d;
+  transform-origin: center;
+
+  transition:
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease;
+
+  transform:
+    translate(-50%, -50%)
+    translateY(var(--y))
+    translateZ(var(--z));
+}
+
+/* ===== Layer configuration (scaled) ===== */
+.h3d-image.main {
+  --y: 0%;
+  --z: 14vw;
+  z-index: 4;
+}
+
+.h3d-image.img1 {
+  --y: 22%;
+  --z: 10vw;
+  z-index: 3;
+  opacity: 0;
+}
+
+.h3d-image.img2 {
+  --y: 44%;
+  --z: 6vw;
+  z-index: 2;
+  opacity: 0;
+}
+
+.h3d-image.img3 {
+  --y: 66%;
+  --z: 2vw;
+  z-index: 1;
+  opacity: 0;
+}
+
+/* ===== Hover interaction (desktop only) ===== */
+@media (hover: hover) {
+  .h3d-image-wrapper:hover .h3d-image {
+    transform:
+      translate(-50%, -50%)
+      translateY(var(--y))
+      translateZ(var(--z))
+      rotate3d(-1, -1, -1, 60deg);
+  }
+
+  .h3d-image-wrapper:hover .h3d-image:not(.main) {
+    opacity: 1;
+  }
+}
+
+/* ===== Optional polish ===== */
+.h3d-image {
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.35);
+}
