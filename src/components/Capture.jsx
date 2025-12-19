@@ -17,7 +17,7 @@ export default function Capture() {
   return (
     <div className="carousel-container">
       <div className="carousel-header">
-        <h1 className="carousel-title">{renderTitle('Capturing Moments, Sharing Stories')}</h1>
+        <h1 className="carousel-title">{renderTitle('From Moments To Stories')}</h1>
         <p className="carousel-subtitle">A glimpse into our moments and creations</p>
       </div>
 

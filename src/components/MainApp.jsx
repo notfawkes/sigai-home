@@ -56,6 +56,17 @@ export default function App() {
           justifyContent: 'center',
           alignItems: 'center',
         },
+        curvedBox: {
+          maxWidth: '1400px',   // adjust: 900 / 1000 / 1100
+          width: '100%',
+          margin: '0 auto',
+          background: 'rgba(255,255,255,0.05)',
+          borderRadius: '32px',
+          padding: '48px',
+          boxShadow: '0 20px 60px rgba(0,0,0,0.35)',
+          backdropFilter: 'blur(12px)',
+          border: '1px solid rgba(255,255,255,0.15)',
+        },
         aboutSection: {
           width: '100%',
           position: 'relative',
@@ -198,36 +209,32 @@ export default function App() {
         </div>
       </div>
 
-      <div style={styles.contentWrapper}>
-        <div style={styles.canvasContainer}>
-          <RubiksCube />
-        </div>
+<div style={styles.curvedBox}>
+  <div style={styles.contentWrapper}>
+    <div style={styles.canvasContainer}>
+      <RubiksCube />
+    </div>
 
-        {/* Text content */}
-<div style={styles.textContainer}>
-  {/* Added light cyan color to match the image heading */}
-  <h1 style={{ ...styles.mainHeading, color: '#AEEFFF' }}>
-    ABOUT US
-  </h1>
+    <div style={styles.textContainer}>
+      <h1 style={{ ...styles.mainHeading, color: '#AEEFFF' }}>
+        ABOUT US
+      </h1>
 
-  <p style={styles.subHeading}>
-    TCET ACM SIGAI is a professional body that was established in January 2023. It aims to bring together and inculcate research ideologies in people from all over India with a passion in the field of Artificial Intelligence and Machine Learning by means of conducting seminars, debates, Kaggle competitions, etc.
-  </p>
+      <p style={styles.subHeading}>
+        TCET ACM SIGAI is a professional body that was established in January 2023...
+      </p>
 
-  <br />
+      <br />
 
-<p style={styles.subHeading}>
-  {/* Added 2 spaces after 50+ */}
-  <span style={{ color: '#3B82F6', fontWeight: 'bold' }}>50+</span>&nbsp;&nbsp;&nbsp;&nbsp;Number of events<br />
-  
-  {/* Added 1 space after 100+ */}
-  <span style={{ color: '#3B82F6', fontWeight: 'bold' }}>100+</span>&nbsp;&nbsp;Members<br />
-  
-  {/* Added 2 spaces after 30% */}
-  <span style={{ color: '#3B82F6', fontWeight: 'bold' }}>30%</span>&nbsp;&nbsp;&nbsp;Growth per year<br />
-</p>
+      <p style={styles.subHeading}>
+        <span style={{ color: '#3B82F6', fontWeight: 'bold' }}>50+</span>&nbsp;&nbsp;&nbsp;&nbsp;Number of events<br />
+        <span style={{ color: '#3B82F6', fontWeight: 'bold' }}>100+</span>&nbsp;&nbsp;Members<br />
+        <span style={{ color: '#3B82F6', fontWeight: 'bold' }}>30%</span>&nbsp;&nbsp;&nbsp;Growth per year<br />
+      </p>
+    </div>
+  </div>
 </div>
-      </div>
+
 {/* 
       <div style={styles.aboutSection}>
         <div style={styles.aboutContainer}>

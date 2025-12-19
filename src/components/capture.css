@@ -39,26 +39,43 @@
 }
 
 .carousel-header {
-  text-align: center; 
-  margin-bottom: 120px; 
-  z-index: 10; 
-  position: relative;
+  max-width: min(92vw, 1200px);
+  padding: 0 16px;
+  margin-bottom: clamp(48px, 10vw, 120px);
 }
 
 .carousel-title {
-  font-family: 'Abril Fatface', serif;
-  font-weight: 400;
-  font-size: clamp(1.75rem, 4.5vw, 3.5rem);
-  letter-spacing: 0.04em;
-  color: rgba(200, 200, 200, 1);
-  margin: 0;
-  line-height: 1.05;
+  font-size: clamp(1.6rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  text-wrap: balance;  
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  text-align: center;
+  font-family: "'Abril Fatface', serif";
+}
+
+.carousel-title span {
+  display: inline-block;
+  white-space: pre;
 }
 
 .carousel-subtitle {
-  color: #9ca3af;
-  font-size: clamp(0.95rem, 2.2vw, 1.25rem);
-  margin-top: 0.75rem;
+  font-size: clamp(0.9rem, 2.5vw, 1.25rem);
+  line-height: 1.6;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .carousel-title {
+    letter-spacing: 0.02em;
+  }
+
+  .carousel-subtitle {
+    font-size: 0.95rem;
+  }
 }
 
 .carousel-wrapper {
@@ -81,7 +98,7 @@
   height: 100%;
   --slides: 4; /* fallback; overridden inline from React */
   --slide-width: 475px;
-  --duration: 45s;
+  --duration: 10s;
   animation: scroll var(--duration) linear infinite;
   will-change: transform;
 }
