@@ -228,9 +228,23 @@ export default function App() {
 
         {/* Text content */}
         <div style={styles.textContainer}>
-          <h1 style={styles.mainHeading}>
-            TCET ACM<br />SIGAI
-          </h1>
+            <h1
+              style={{
+                fontSize: "8rem",
+                fontWeight: 800,
+                lineHeight: 1.1,
+                background: "linear-gradient(90deg, #1CB5E0 0%, #000851 100%)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                textFillColor: "transparent",
+                letterSpacing: "0.05em",
+                fontFamily: " 'Abril Fatface', serif "
+              }}
+            >
+              TCET ACM<br />SIGAI
+            </h1>
+
           <p style={styles.subHeading}>
             Student's Chapter
           </p>
@@ -361,9 +375,8 @@ export default function App() {
     <Hover3DCard
       mainImage={tejas1}
       extraImages={[
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-        "https://images.unsplash.com/photo-1526378722484-bd91ca387e72",
-        "https://images.unsplash.com/photo-1555066931-4365d14bab8c",
+        "https://i.ibb.co/M57WVZHS/tejas1.png",
+        "https://i.ibb.co/prfCg2F0/tejas2.png",
       ]}
     />
   </div>
