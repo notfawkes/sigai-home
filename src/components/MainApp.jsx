@@ -332,7 +332,7 @@ export default function App() {
     </p>
 
     {/* Button with Link */}
-    <a href="https://acm-sigai.vercel.app/publications" target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
+    <a href="https://acm-sigai.vercel.app/Publications" target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
       <button
         className="
           rounded-full
