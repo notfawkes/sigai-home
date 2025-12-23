@@ -85,7 +85,8 @@ export default function App() {
   
       container: {
         position: 'relative',
-        width: '100vw',
+        width: '100%',
+        overflowX: 'hidden',
         minHeight: '100vh',
         overflowX: 'hidden',
         display: 'flex',
@@ -230,7 +231,7 @@ export default function App() {
         <div style={styles.textContainer}>
             <h1
               style={{
-                fontSize: "8rem",
+                fontSize: 'clamp(4rem, 8vw, 8rem)',
                 fontWeight: 800,
                 lineHeight: 1.1,
                 background: "linear-gradient(90deg, #1CB5E0 0%, #000851 100%)",
